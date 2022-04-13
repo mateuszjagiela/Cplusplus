@@ -1,0 +1,104 @@
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <regex>
+
+using namespace std;
+
+struct Exchange_rate
+{
+    string date;
+    double usd;
+    double eur;
+    string table_id;
+};
+
+double binary_search(const vector<Exchange_rate> &vec, int l, int p, double usdr)
+{
+    int mid = 0, pmid=0;
+    while(l<=p)
+    {
+        pmid = mid;
+        mid = (l+p)/2;
+        if(vec[mid].usd == usdr)
+        {
+            return mid;
+        }
+        else if(usdr < vec[mid].usd)
+        {
+            p=mid;
+        }
+        else
+        {
+            l=mid;
+        }
+        if(mid==pmid)
+        {
+            return 0;
+        }
+    }
+    return -1;
+}
+
+int main()
+{
+    fstream file("C:/Users/PC/Downloads/kursy_usd_eur.csv", fstream::in);
+    vector<Exchange_rate> rates;
+    if (file.is_open()) {
+        string line;
+        getline(file, line); // wczytuje pierwszą linię z nagłówkiem i ją ignoruje
+        while (getline(file, line)) {//wczytuje kolejne linie aż do końca pliku
+            stringstream str(line);//tworzy strumień, którego źródłem jest wczytana linia
+
+            Exchange_rate er;
+            getline(str, er.date, ','); //wczytuje date (pierwszy element wiersza)
+            string double_str;
+            getline(str, double_str, ',');  // wczytuje kurs USD (jako tekst)
+            er.usd = stod(double_str);      //zamiana na string->double
+            getline(str, double_str, ',');  // wczytuje kurs EUR (jako tekst)
+            er.eur = stod(double_str);      //zamiana na string->double
+            getline(str, er.table_id, ','); // wczytuje ostatnią kolumnę z numerem tabeli NBP
+            rates.emplace_back(er); //dodaje element do kolekcji
+        }
+    }
+    else
+    {
+        cout<<"nie dziala";
+    }
+
+    sort(rates.begin(), rates.end(), [] (Exchange_rate& l, Exchange_rate& r) -> bool
+    {
+     return l.usd < r.usd;
+    });
+
+    int l = 0;
+    int p = (int)rates.size() - 1;
+    double usd = 0;
+
+    cout<<"Podaj szukana wartosc dolara: ";
+    cin>>usd;
+
+    int wynik = binary_search(rates,l,p,usd);
+
+    if(wynik == 0)
+    {
+        cout<<"Szukana wartosc nie wystepuje."<<endl;
+    }
+    else
+    {
+        cout<<"Data: " << rates[wynik].date << ", wartosc: " <<rates[wynik].usd << endl;
+    }
+
+    //szukanie liniowe
+    /*for (auto& r: rates)
+    {
+        if(r.usd == 3.9011)
+        {
+            cout<< r.date << ": " << r.usd;
+        }
+    }*/
+    return 0;
+}

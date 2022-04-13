@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+vector<string> split(const string napis, char znak=' ')
+{
+    vector<string> wyrazy;
+
+    size_t position1, position2;
+    position1 = 0;
+    string dodawany;
+
+    while ((position2 = napis.find(znak, position1 + 1)) != std::string::npos)
+    {
+        dodawany = napis.substr(position1, position2-position1);
+        wyrazy.push_back(dodawany);
+        position1=position2+1;
+    }
+    dodawany = napis.substr(position1, napis.size()-position1);
+    wyrazy.push_back(dodawany);
+   return wyrazy;
+}
+
+int main()
+{
+    string sentence = "Ala ma kota, ktory ma na imie adrian";
+    vector<string> words = split(sentence); // wynik: {"Ala", "ma", "kota"}
+    for(int i=0; i<words.size(); i++)
+    {
+        cout << words[i] << endl;
+    }
+
+    string csv = "Mount Everest,8848,1953";
+    vector<string> data = split(csv, ','); // wynik: {"Mount Everest", "8848", "1953"}
+    for(int i=0; i<data.size(); i++)
+    {
+        cout << data[i] << endl;
+    }
+    return 0;
+}

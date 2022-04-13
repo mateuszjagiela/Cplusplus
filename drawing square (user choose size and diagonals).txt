@@ -1,0 +1,38 @@
+#include <iostream>
+
+using namespace std;
+
+void draw_square(int a, bool pierwsza, bool druga)
+{
+    for(int i=0; i<a; i++)
+    {
+        if(i==0||i==a-1)
+        {
+            for(int j=0; j<a; j++)
+            {
+                cout << "#";
+            }
+            cout<< endl;
+        }
+        else
+        {
+            cout << "#";
+            for(int k=0; k<a-2; k++)
+            {
+                if(k==i-1&& pierwsza==true) cout << "#";
+                else if(k==a-2-i && druga== true) cout << "#";
+                else cout << " ";
+            }
+            cout << "#" << endl;
+        }
+    }
+    cout << endl;
+}
+
+int main()
+{
+ draw_square(7, false, false);
+ draw_square(7, true, false);
+ draw_square(7, false, true);
+ draw_square(7, true, true);
+}

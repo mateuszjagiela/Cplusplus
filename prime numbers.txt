@@ -1,0 +1,48 @@
+#include <iostream>
+
+using namespace std;
+
+bool is_prime(int check)
+{
+    if(check<2) return false;
+    for(int i=1; i<=check; i++)
+    {
+        if(check%i==0 && i!=1 && i!=check)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main()
+{
+    int a, b, c=0;
+    int prime_or_not_prime = 13;
+    if (is_prime(prime_or_not_prime)) {
+        std::cout << prime_or_not_prime << " is prime!" << std::endl;
+    } else {
+        std::cout << prime_or_not_prime << " is not prime!" << std::endl;
+    }
+    cout << "Jaki jest najwiekszy potencjalny dzielnik, jaki warto sprawdzac dla danej liczby?" << endl;
+    cout << "Mozna sprawdzac liczby z zakresu 2 do pierwiastka ze sprawdzanej liczby" << endl;
+    cout << "Pierwszy dzielnik jest w parze z ostatnim drugi z przedostatnim itd dlatego tylko do pierwiastka" << endl;
+
+    
+    cout << endl << "Podaj calkowita dolna granice zakresu liczb pierwszych ktore chcialbys wyswietlic:";
+    cin >> a;
+    cout << endl << "Podaj calkowita gorna granice zakresu liczb pierwszych ktore chcialbys wyswietlic:";
+    cin >> b;
+    cout << endl << "Oto liczby pierwsze mieszczace sie w podanym zakresie: " << endl;
+    for(int i=0; i<=b-a; i++)
+    {
+      if(is_prime(a+i))
+      {
+          cout << a+i << " ";
+          c++;
+      }
+    }
+    if(c==0) cout << endl << "Nie znaleziono liczb pierwszych w tym zakresie" << endl;
+
+    return 0;
+}

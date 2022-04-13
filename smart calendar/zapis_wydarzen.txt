@@ -1,0 +1,135 @@
+1
+Kolokwium z informatyki
+Politechnika 3 pietro
+2022
+1
+17
+13
+30
+3
+2
+Zaliczenie z ergonomii
+Zdalnie- w domu
+2022
+1
+20
+18
+0
+3
+3
+Nauka algebry z geometria
+Dom
+2022
+1
+17
+16
+30
+1
+4
+Termin zerowy analiza matematyczna
+Politechnika
+2022
+1
+25
+17
+0
+3
+5
+Kolokwium analiza matematyczna cwiczenia
+politechnika
+2022
+1
+26
+8
+0
+2
+6
+Kolokwium z algebry cwiczenia
+politechnika
+2022
+1
+27
+17
+0
+2
+7
+Zaliczenie z wykladow z informatyki
+politechnika
+2022
+2
+3
+9
+0
+3
+8
+BHP
+zdalnie
+2022
+1
+26
+12
+0
+2
+9
+Zaliczenie angielski
+Politechnika
+2022
+1
+26
+13
+30
+1
+10
+Zaliczenie algebra wyklady
+Politechnika
+2022
+2
+10
+15
+0
+3
+11
+Nauka algebry
+dom
+2022
+1
+21
+18
+0
+2
+12
+Nauka analizy
+dom
+2022
+1
+21
+19
+0
+2
+13
+Nauka analizy
+dom
+2022
+1
+23
+15
+0
+2
+14
+Oddanie projektow z informatyki
+Zdalnie
+2022
+1
+24
+20
+30
+3
+15
+TEST
+DOM
+2022
+1
+24
+20
+20
+2

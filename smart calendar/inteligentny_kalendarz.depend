@@ -1,0 +1,59 @@
+# depslib dependency file v1.0
+1642019938 source:c:\users\48698\desktop\c++\inteligentny_kalendarz\main.cpp
+	<iostream>
+	<stdio.h>
+	<cstdlib>
+	<string>
+	<windows.h>
+	<winbase.h>
+	<fstream>
+	<vector>
+	<time.h>
+	<ctime>
+	"wydarzenie.h"
+
+1642019806 c:\users\48698\desktop\c++\inteligentny_kalendarz\wydarzenie.h
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<string>
+	<vector>
+	<time.h>
+	<ctime>
+	<windows.h>
+	<winbase.h>
+
+1642019854 source:c:\users\48698\desktop\c++\inteligentny_kalendarz\wydarzenie.cpp
+	"wydarzenie.h"
+
+1643039895 source:c:\users\48698\desktop\inteligentny_kalendarz\main.cpp
+	<iostream>
+	<conio.h>
+	<stdio.h>
+	<cstdlib>
+	<string>
+	<windows.h>
+	<winbase.h>
+	<fstream>
+	<vector>
+	<time.h>
+	<ctime>
+	<algorithm>
+	"wydarzenie.h"
+
+1642504942 c:\users\48698\desktop\inteligentny_kalendarz\wydarzenie.h
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<string>
+	<vector>
+	<time.h>
+	<ctime>
+	<windows.h>
+	<winbase.h>
+	<conio.h>
+	<algorithm>
+
+1643050716 source:c:\users\48698\desktop\inteligentny_kalendarz\wydarzenie.cpp
+	"wydarzenie.h"
+

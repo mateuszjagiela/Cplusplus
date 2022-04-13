@@ -1,0 +1,91 @@
+#include <iostream>
+#include <map>
+#include <fstream>
+#include <sstream>
+#include <locale>
+#include <cctype>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    map<string, int> word_statistics;
+    vector<pair< string, int>> vec;
+    string::size_type j;
+
+    fstream file("C:/Users/mateu/OneDrive/Dokumenty/nienazwany2/license.txt", fstream::in);
+    if (file.is_open())
+    {
+        string line, word;
+        while (getline(file, line)) {//wczytuje kolejne linie aż do końca pliku
+            for (auto ptr = line.begin(); ptr < line.end(); ++ptr)
+            {
+                //if (*ptr != ' ' && *ptr != '\t' && *ptr != '.' && *ptr != ',' && *ptr != ';' && *ptr != ')' && *ptr != '(' && *ptr != '"' && *ptr != ':')
+                if((*ptr>64 && *ptr < 91) || (*ptr>96 && *ptr<123) || (*ptr == 39) || (*ptr == '-'))
+                {
+                    word += *ptr;
+                }
+                else {
+                    //
+                    if (!word.empty())
+                    {
+                        for(j=0; j<word.length(); ++j)
+                        {
+                            word[j]=(char) tolower(word[j]);
+                        }
+                        auto search = word_statistics.find(word);
+                        if(search != word_statistics.end())
+                        {
+                            word_statistics[word] += 1;
+                        }
+                        else
+                        {
+                            word_statistics[word]=1;
+                        }
+                        word.clear();
+                    }
+                }
+            }
+            //
+            if (!word.empty())
+            {
+                for(j=0; j<word.length(); ++j)
+                {
+                    word[j]=(char) tolower(word[j]);
+                }
+                auto search = word_statistics.find(word);
+                if(search != word_statistics.end())
+                {
+                    word_statistics[word] += 1;
+                }
+                else
+                {
+                    word_statistics[word]=1;
+                }
+                word.clear();
+            }
+        }
+    }
+
+    /*for (const auto& e: word_statistics)
+    {
+        cout << e.first << ", " << e.second << endl;
+    }*/
+
+    for(const auto& e: word_statistics)
+    {
+        vec.emplace_back(e.first,e.second);
+    }
+
+    sort(vec.begin(), vec.end(), [](const pair<string,int> &l, const pair<string,int> &r) -> bool {
+        return l.second > r.second;
+    });
+
+    for(const auto& e: vec)
+    {
+        cout<<e.second<<" "<<e.first<<endl;
+    }
+
+    return 0;
+}

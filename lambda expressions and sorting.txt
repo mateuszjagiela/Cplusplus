@@ -1,0 +1,82 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+struct Sword {
+
+    enum class Type { Bastard, Great, Short, Katana, Ceremonial };
+
+    string name;
+    Type type;
+    float length;
+
+    Sword(const string& name, Type type = Type::Bastard, float length = 0.) :
+        name(name), type(type), length(length)
+    {}
+    void print() const {
+        cout << "name: " << name;
+        cout << ", type: ";
+        switch (type) {
+        case Type::Bastard: cout << "Bastard"; break;
+        case Type::Great: cout << "Great"; break;
+        case Type::Short: cout << "Short"; break;
+        case Type::Katana: cout << "Katana"; break;
+        case Type::Ceremonial: cout << "Ceremonial"; break;
+        }
+        cout << ", length: " << length << endl;
+    }
+};
+
+template <typename Ptr, typename Cmp>
+
+void bubble_sort(Ptr begin, Ptr end, Cmp cmp)
+{
+    for(auto i=begin; i<end-1; ++i)
+    {
+        for(auto j=i+1; j<end; ++j)
+        {
+            if(cmp(*i, *j)) swap(*i, *j);
+        }
+    }
+}
+
+int main() {
+     std::vector<Sword> swords = {
+        Sword("Durendal", Sword::Type::Bastard, 1.3),
+        Sword("Excalibur", Sword::Type::Great, 1.5),
+        Sword("Soshu Akihiro", Sword::Type::Short, 0.6),
+        Sword("Mikazuki-munechika", Sword::Type::Katana, 1.2),
+        Sword("Odenta", Sword::Type::Katana, 1.0),
+        Sword("Muramasa", Sword::Type::Katana, 1.14),
+        Sword("Dojigiri", Sword::Type::Katana, 0.9),
+        Sword("Szczerbiec", Sword::Type::Ceremonial, 1.3),
+    };
+    for(const auto& s: swords) s.print();
+
+    //std::sort(swords.begin(), swords.end(), comp_length);
+    bubble_sort(swords.begin(), swords.end(), [](const Sword& l, const Sword& r) -> bool {return l.length > r.length;});
+    cout << "by length: " << endl;
+    for(const auto& s: swords) s.print();
+
+    //std::sort(swords.begin(), swords.end(), [](const Sword& l, const Sword& r) -> bool { return l.name < r.name; });
+    bubble_sort(swords.begin(), swords.end(), [](const Sword& l, const Sword& r) -> bool {return l.name > r.name;});
+    cout << "by name: " << endl;
+    for(const auto& s: swords) s.print();
+
+    bubble_sort(swords.begin(), swords.end(), [](const Sword& l, const Sword& r) -> bool {return l.type > r.type;});
+    cout << "by type: " << endl;
+    for(const auto& s: swords) s.print();
+
+    bubble_sort(swords.begin(), swords.end(), [](const Sword& l, const Sword& r) -> bool
+    {
+        if(l.type == r.type) return l.length > r.length;
+        return l.type > r.type;
+    });
+    cout << "by type and length: " << endl;
+    for(const auto& s: swords) s.print();
+
+    return 0;
+}
