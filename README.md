@@ -11,3 +11,5 @@ Some of my old files created to study
 8. prime numbers - simple function checking if number is prime
 9. binary search - finds chosen value in file using binary search
 
+10. bagno.zip is my exam made to study
+11. project
